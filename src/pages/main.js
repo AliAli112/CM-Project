@@ -59,7 +59,7 @@ export const Main = () => {
                     <h3>LIMITLESS<br/>SUSTAINABLITY<br/>FOR ALL</h3>
                 </div>
                 <div className='img-cnt'>
-                    <img className="logo" src="/logo2.jpg" alt="Logo" />
+                    <img className="logo" src="/logobrain.png" alt="Logo" />
                 </div>
             </div>
             
