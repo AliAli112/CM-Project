@@ -10,20 +10,28 @@ export const Mint = () => {
             <div className='main'>
                 <div className='info-box'>
                     <div className='info'>
-                        <span className='top'>CURRENT OWNER</span>
-                        <span className='lg'>@LOW84</span>
+                        <div className='info-words'>
+                            <span className='top'>CURRENT OWNER</span>
+                            <span className='lg'>@LOW84</span>
+                        </div>
                     </div>
                     <div className='info'>
-                        <span className='top'>NFT ID</span>
-                        <span className='lg'>0001</span>
+                        <div className='info-words'>
+                            <span className='top'>NFT ID</span>
+                            <span className='lg'>0001</span>
+                        </div>
                     </div>
                     <div className='info'>
-                        <span className='top'>PRICE</span>
-                        <span className='lg'>$500.00</span>
+                        <div className='info-words'>
+                            <span className='top'>PRICE</span>
+                            <span className='lg'>$500.00</span>
+                        </div>
                     </div>
                     <div className='info'>
-                        <span className='top'>CONTRACT ID</span>
-                        <span className='lg'>@LOW84</span>
+                        <div className='info-words'>
+                            <span className='top'>CONTRACT ID</span>
+                            <span className='lg'>@LOW84</span>
+                        </div>
                     </div>
                 </div>
                 <div className='minting-box'>

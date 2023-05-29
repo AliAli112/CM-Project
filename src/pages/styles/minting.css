@@ -31,7 +31,7 @@
 .info {
     width: 100%;
     height: 100%;
-    padding: 6%;
+    /* padding: 6%; */
     margin: 1%;
     border-radius: 10px;
     box-shadow: 0px 1px 10px #c9c9c9;
@@ -91,6 +91,10 @@ span {
     color: #0C134F;
     font-size: 2em;
     font-weight: bold;
+}
+
+.info-words {
+    padding: 20%;
 }
 
 .top {
@@ -161,6 +165,11 @@ span {
       display: flex;
       flex-direction: column;
       width: 80%;
+      padding: 6%;
+    }
+
+    .info-words {
+        padding: 0;
     }
 
     .top{
@@ -222,3 +231,79 @@ span {
       bottom: 0;
     }
   }
+
+  @media (min-width: 767px) and (max-width: 1150px) {
+    .btn-cnt1 {
+        width: 100%;
+    }
+    
+    .c {
+        margin-top: 5%;
+        padding: 0.5em 25%;
+    }
+
+    .m {
+        margin: 1em 0 0 0;
+        padding: 4% 28%;
+        margin-top: 10%;
+    }
+
+    .btn-sm {
+        padding: 0.6em 1em;
+        margin-left: 0.5%;
+    }
+  }
+  
+
+  @media (min-width: 375px) and (max-width: 767px) {
+    .info {
+        width: 30%;
+        padding: 6%;
+    }
+
+    .info-box {
+        display: flex;
+        flex-wrap: wrap;
+        flex: 0 0 30%;
+    }
+
+    .info-words {
+        padding: 0;
+    }
+
+    .minting-box {
+        display: flex;
+        flex-direction: column;
+        width: 65%;
+        margin-bottom: 10%;
+        background-color: #fff;
+      }
+      
+      .mint-cnt-1 {
+        width: 100%;
+      }
+  
+      .mint-cnt-2 {
+        width: 100%;
+        align-items: center;
+      }
+      
+      .counter {
+        display: block;
+        margin: 2%;
+        margin-top: 3%;
+        padding: 0% 3% 5% 3%;
+        height: 3em;
+      }
+  
+      .cnt {
+        width: 50%;
+      }
+  
+      .cnt-val {
+        display: block;
+        text-align: center;
+        width: 58%;
+        font-size: 30px;
+      }
+}
