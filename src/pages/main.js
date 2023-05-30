@@ -13,6 +13,15 @@ export const Main = () => {
 
     let nav = useNavigate()
 
+    useEffect(() => {
+        async function callback() {
+            await getCurrentWalletConnected()
+
+            addWalletListener()
+        }
+        callback();
+      }, []);
+
     async function connectWallet() {
         if (window.ethereum) {
           try {
@@ -21,7 +30,8 @@ export const Main = () => {
             
             // Wallet connected successfully
             console.log('Wallet connected!');
-            setWalletAddress(shortedAddress(accounts[0]))
+            setWalletAddress(accounts[0])
+            checkAddress(accounts[0])
             // Create an ethers.js provider
             const provider = new ethers.BrowserProvider(window.ethereum);
             
@@ -39,14 +49,54 @@ export const Main = () => {
         }
       }
 
-      const shortedAddress = (address) => {
+      const checkAddress = (address) => {
         if (address.substring(0,2) === '0x' && address.length === 42){
             setErrMessage('')
             setisHasAddress(true)
-            return address.substring(0,4) + '....' + address.substring(38)
         }else{
             setisHasAddress(false)
-            return 'Connect Wallet'
+        }
+      }
+
+      const getCurrentWalletConnected = async () => {
+        //Function to maintain connection when page is reloaded
+        if (window.ethereum) {
+          try {
+            const addressArray = await window.ethereum.request({
+              method: "eth_accounts",
+            });
+            if (addressArray.length > 0) {
+                setWalletAddress(addressArray[0])
+                setisHasAddress(true)
+            } else {
+                setWalletAddress('')
+                setisHasAddress(false)
+            }
+          } catch (err) {
+            setWalletAddress('')
+            setisHasAddress(false)
+            setErrMessage('Connect to Metamask')
+          }
+        } else {
+            setWalletAddress('')
+            setisHasAddress(false)
+            setErrMessage('MetaMask not detected. Please install MetaMask extension')
+        }
+      };
+
+      function addWalletListener() {
+        //Function reacts to any Account changes and updates the accounts accordingly
+        if (window.ethereum) {
+          window.ethereum.on("accountsChanged", (accounts) => {
+            if (accounts.length > 0) {
+              setWalletAddress(accounts[0]);
+            } else {
+              setWalletAddress("");
+              setErrMessage('Connect to Metamask')
+            }
+          });
+        } else {
+          setErrMessage('MetaMask not detected. Please install MetaMask extension')
         }
       }
 
@@ -77,11 +127,17 @@ export const Main = () => {
                         <span className='err'>{ errMessage }</span>
                         <button className='btn' onClick={() => {
                             isHasAddress? nav('/mint') : connectWallet()
-                        } }>{ walletAddress }</button>
+                        } }>
+                        {
+                            walletAddress.substring(0,2) === '0x' && walletAddress.length === 42? 
+                                walletAddress.substring(0,4) + '....' + walletAddress.substring(38) 
+                            : 'Connect Wallet'
+                        }
+                        </button>
                     </div>
                 </div>
                 <div className='card'>
-                    <img className='nft' src='/foundersNFT.png' alt="NFT"/>
+                    <img className='nft' src='/foundersNFTx.jpg' alt="NFT"/>
                     <div className='c-title'>
                         <span className='card-span'>FOUNDERS NFT</span>
                     </div>
