@@ -7,7 +7,6 @@ import './styles/main.css'
 
 export const Main = () => {
 
-    const [ loading, setLoading ] = useState(true)
     const [ walletAddress, setWalletAddress ] = useState('Connect Wallet')
     const [ errMessage, setErrMessage ] = useState('')
     const [ isHasAddress, setisHasAddress ] = useState(false)
@@ -33,14 +32,6 @@ export const Main = () => {
             console.log('Wallet connected!');
             setWalletAddress(accounts[0])
             checkAddress(accounts[0])
-            // // Create an ethers.js provider
-            // const provider = new ethers.BrowserProvider(window.ethereum);
-            
-            // // You can now use the provider to interact with the Ethereum network
-            // // For example, you can get the signer's address:
-            // const signerAddress = await (await provider.getSigner()).address
-            // console.log('Signer address:', signerAddress);
-            
           } catch (error) {
             console.error('Error connecting wallet:', error);
           }
