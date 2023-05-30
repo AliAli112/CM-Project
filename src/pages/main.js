@@ -33,13 +33,13 @@ export const Main = () => {
             console.log('Wallet connected!');
             setWalletAddress(accounts[0])
             checkAddress(accounts[0])
-            // Create an ethers.js provider
-            const provider = new ethers.BrowserProvider(window.ethereum);
+            // // Create an ethers.js provider
+            // const provider = new ethers.BrowserProvider(window.ethereum);
             
-            // You can now use the provider to interact with the Ethereum network
-            // For example, you can get the signer's address:
-            const signerAddress = await provider.getSigner().getAddress();
-            console.log('Signer address:', signerAddress);
+            // // You can now use the provider to interact with the Ethereum network
+            // // For example, you can get the signer's address:
+            // const signerAddress = await (await provider.getSigner()).address
+            // console.log('Signer address:', signerAddress);
             
           } catch (error) {
             console.error('Error connecting wallet:', error);
